@@ -10,10 +10,6 @@ Module.register("MMM-SensorGateway", {
 	// Default module config.
 	defaults: {
 	},
-	getStyles: function () {
-		// the css contains the make grayscale code
-		return ['environment.css'];
-	},
 	getTemplateData: function () {
 		return this.config;
 	},
@@ -89,8 +85,7 @@ Module.register("MMM-SensorGateway", {
 		locationIcon.innerHTML = this.translate("LOCATION");
 
 		var team_logo_image = document.createElement('img');
-		team_logo_image.className = 'MMM-SoccerLiveScore-team_logo';
-		team_logo_image.src = "modules/MMM-MovesenseController/images/home.png";
+		team_logo_image.src = "modules/MMM-SensorGateway/images/home.png";
 		team_logo_image.width = 40;
 		team_logo_image.height = 40;
 		locationIcon.appendChild(team_logo_image);
@@ -100,8 +95,7 @@ Module.register("MMM-SensorGateway", {
 		temperatureIcon.innerHTML = this.translate("TEMPERATURE");
 
 		var logoimage2 = document.createElement('img');
-		logoimage2.className = 'MMM-SoccerLiveScore-team_logo';
-		logoimage2.src = "modules/MMM-MovesenseController/images/temperature.png";
+		logoimage2.src = "modules/MMM-SensorGateway/images/temperature.png";
 		logoimage2.width = 40;
 		logoimage2.height = 40;
 		temperatureIcon.appendChild(logoimage2);
@@ -111,8 +105,7 @@ Module.register("MMM-SensorGateway", {
 		pressureIcon.innerHTML = this.translate("AIR_PRESSURE");
 
 		var image3 = document.createElement('img');
-		image3.className = 'MMM-SoccerLiveScore-team_logo';
-		image3.src = "modules/MMM-MovesenseController/images/pressure.png";
+		image3.src = "modules/MMM-SensorGateway/images/pressure.png";
 		image3.width = 40;
 		image3.height = 40;
 		pressureIcon.appendChild(image3);
@@ -122,8 +115,7 @@ Module.register("MMM-SensorGateway", {
 		humidityIcon.innerHTML = this.translate("HUMIDITY");
 
 		var image4 = document.createElement('img');
-		image4.className = 'MMM-SoccerLiveScore-team_logo';
-		image4.src = "modules/MMM-MovesenseController/images/humidity.png";
+		image4.src = "modules/MMM-SensorGateway/images/humidity.png";
 		image4.width = 40;
 		image4.height = 40;
 		humidityIcon.appendChild(image4);
