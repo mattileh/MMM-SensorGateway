@@ -1,0 +1,20 @@
+{
+  "name": "MMM-SensorGateway",
+  "version": "1.0.0",
+  "description": "MagicMirror platform 3rd party module for utilizing Movesense and RuuviTag sensors",
+  "main": "MMM-SensorGateway.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Movesense",
+    "RuuviTag",
+    "IoT"
+  ],
+  "author": "Matti Lehtinen",
+  "license": "MIT",
+  "dependencies": {
+    "exec": "^0.2.1",
+    "websocket": "^1.0.30"
+  }
+}
