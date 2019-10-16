@@ -54,7 +54,6 @@ def callback(raw):
 	battery = _to_int(raw[41])
 	state = _to_int(raw[42])
 	payload = {"type":"movesense", "MAC": bt_addr, "packet": paketti, "battery":battery, "state": state,"temp": temperature}
-	print("movesense package: ")
 	print(payload)
 	ws.send(json.dumps(payload))
 

@@ -57,38 +57,8 @@ echo "Write launcher file $servicelauncher"
 
 echo "#!/bin/bash
 
-# Not so fine way to init system and startup router, but here's some to test what
-# we need for it.
-
-#hciline=\`cat $servicesettingsfile | grep hci\`
-#hci="hci"\`cut -d "=" -f 2 <<< "\$hciline"\`
-
-# Restart bluetooth
-#sudo service bluetooth stop
-#sudo service bluetooth start
-#sleep 2
-
-# Set bluetooth available
-#sudo rfkill unblock bluetooth
-#sleep 2
-
-# Reset interface
-#sudo hciconfig \$hci reset
-
-# Turn adv mode on and off
-#sudo hciconfig \$hci leadv
-#sleep 5
-#sudo hciconfig \$hci noleadv
-#sleep 2
-
-# Scan a while (looks like this is important somehow)
-#sudo hcitool -i \$hci lescan --duplicates &
-#sleep 2
-# Then kill scanning
-#sudo killall -9 hcitool
-
 cd $repopath/gateway/
-sudo /usr/bin/env python bleAdvWebSocket.py &
+sudo /usr/bin/env python bleAdvWebSocket.py
 " > $servicelauncher
 
 sudo chmod +x $servicelauncher
