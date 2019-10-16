@@ -88,7 +88,6 @@ def on_open(ws):
             return
 
         bthci = config.get('bluetooth', 'hci')
-        print "PUUKKO start scanner"
         scanner = bleAdvScanner(callback, bt_device_id=int(bthci))
         scanner.start()
 
@@ -110,7 +109,7 @@ def _main(argv):
 #    hostname = "ws://192.168.10.63:8001/"
 # rasperry pi modules running on localhost:
     hostname = "ws://localhost:8001/"
-    print("puukko - hostname: " +hostname)
+    print("using - hostname: " +hostname)
     ws = websocket.WebSocketApp(hostname,
                                 on_message=on_message,
                                 on_error=on_error,
