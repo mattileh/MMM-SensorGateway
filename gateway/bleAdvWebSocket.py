@@ -39,9 +39,11 @@ def _bt_addr_to_string(addr):
         """Convert a binary string to the hex representation."""
         addr_str = array.array('B', addr)
         addr_str.reverse()
-        hex_str = hexlify(addr_str.tostring()).decode('ascii')
+        hex_str = hexlify(addr_str.tostring()).decode('ascii').upper()
         # insert ":" seperator between the bytes
-        return ':'.join(a+b for a, b in zip(hex_str[::2], hex_str[1::2]))
+        #return ':'.join(a+b for a, b in zip(hex_str[::2], hex_str[1::2]))
+        hex_str = ':'.join(a+b for a, b in zip(hex_str[::2], hex_str[1::2]))
+        return hex_str.encode("ascii")
 
 # function handles Movesense beacons with MMM magic
 def callback(raw):
@@ -51,7 +53,7 @@ def callback(raw):
 	paketti = _to_int(raw[40])
 	battery = _to_int(raw[41])
 	state = _to_int(raw[42])
-	payload = {"type":"movesense", "packet": paketti, "battery":battery, "state": state,"temp": temperature}
+	payload = {"type":"movesense", "MAC": bt_addr, "packet": paketti, "battery":battery, "state": state,"temp": temperature}
 	print("movesense package: ")
 	print(payload)
 	ws.send(json.dumps(payload))
