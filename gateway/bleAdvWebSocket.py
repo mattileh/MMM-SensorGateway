@@ -108,9 +108,9 @@ def _main(argv):
     websocket.enableTrace(False)
 
 # use ip address in local network for debugging purposes
-    hostname = "ws://192.168.10.63:8001/"
+#    hostname = "ws://192.168.10.63:8001/"
 # rasperry pi modules running on localhost:
-#    hostname = "ws://localhost:8001/"
+    hostname = "ws://localhost:8001/"
     print("puukko - hostname: " +hostname)
     ws = websocket.WebSocketApp(hostname,
                                 on_message=on_message,
