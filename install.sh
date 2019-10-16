@@ -12,6 +12,9 @@ servicesettingsfile="/etc/local_blegateway.cnf"
 srcpath=`pwd`
 repopath=$PWD
 
+echo "Copy screen toggle script"
+/bin/cp -rf $repopath/scripts/screen.sh /usr/bin/screen.sh
+
 if [ -f "$servicefile" ]; then
     echo "Remove existing service"
     service $servicename stop
