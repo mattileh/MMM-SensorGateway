@@ -18,6 +18,12 @@ Example to forward BLE beaconing sensors info into MagicMirror² platform
 
 ![Example UI](/documentation/exampleui.png)
 
+* RuuviTag(s) information is routed to MagicMirror platform.
+* Movesense tag is used as a control platform for demo purposes.
+  * Doubletapping the configured Movesense switches off (and back on) the MM2 screen
+  * Example firmwares can be found from firmwares folder (for own implementation see beaconing examples in : https://bitbucket.org/suunto/movesense-device-lib/src/master/samples/custom_bleadv_app/) 
+  
+
 # Installation guide
 
 Out of scope :
@@ -65,4 +71,6 @@ Oct 16 19:45:40 raspberrypi local_blegatewaykickstart.sh[962]: {'acceleration': 
 
 # Troubleshooting
 
-TODO
+* Gateway and MM2 modules uses TCP port 8001 for communicating (check if another software is using this)
+* Gateway can be changed to route beacons to local network (for example debugging from PC). See def _main(argv): in bleAdvWebSocket.py
+* Run gateway manually go to gateway folder and `sudo python bleAdvWebSocket.py`
