@@ -156,7 +156,7 @@ Module.register("MMM-SensorGateway", {
 
 		var self = this;
 		if (notification === 'MOVESENSE_CONTROL_PACKET') {
-			if (this.controlsensor.MAC === obj.MAC) {
+			if (this.config.controlsensor.MAC === obj.MAC) {
 				if (obj.state === 1) {
 					if (self.gState != 1) {
 						self.gState = 1;
