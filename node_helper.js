@@ -38,7 +38,8 @@ module.exports = NodeHelper.create({
     });
   },
   socketNotificationReceived: function (notification, payload) {
-    var opts = { timeout: 1 };
+    //some lease for toggling on/off
+    var opts = { timeout: 1000 };
 
     if (notification === 'SENSORGATEWAY_START') {
       console.log("MMM-SensorGateway node_helper: SENSORGATEWAY_START notification received. Module is now up&running");
