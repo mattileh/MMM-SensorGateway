@@ -7,16 +7,8 @@
  * MIT Licensed.
  */
 Module.register("MMM-SensorGateway", {
-	// Default module config.
-	defaults: {
-	},
-	getTemplateData: function () {
-		return this.config;
-	},
 	// Override start method.
 	start: function () {
-		Log.log(this.name + ' PUUKKO START FUNCTIONS!');
-
 		if (this.config.envsensors.length > 0) {
 			this.envsensors = new Array({
 				MAC: this.config.envsensors[0].MAC, location: this.config.envsensors[0].location,
@@ -28,11 +20,7 @@ Module.register("MMM-SensorGateway", {
 					MAC: this.config.envsensors[i].MAC, location: this.config.envsensors[i].location, temperature: this.config.envsensors[i].temperature,
 					pressure: NaN, temperature: NaN, humidity: NaN
 				});
-				Log.log(this.config.envsensors[i].name + ' PUUKKO for loop');
 			}
-
-			Log.log(this.envsensors.length + ' for loopin jälkeen total pitäis olla 2');
-			Log.log(this.envsensors[0].location + ' 1.location');
 		}
 
 		this.gLocationText = "No data"
@@ -40,22 +28,6 @@ Module.register("MMM-SensorGateway", {
 			this.gTemp = NaN,
 			this.gPressure = NaN,
 			this.gHumidity = NaN
-
-		this.sendDummyNotification();
-	},
-	loaded: function (callback) {
-		this.finishLoading();
-		Log.log(this.name + ' PUUKKO is loaded!');
-		callback();
-	},
-	sendDummyNotification: function () {
-		this.sendSocketNotification("MOVESENSE1", {});
-	},
-	sendDisplayOffNotification: function () {
-		this.sendSocketNotification("MOVESENSE2", {});
-	},
-	// generic notification handler
-	notificationReceived: function (notification, payload, sender) {
 	},
 	// Define required translations.
 	getTranslations: function () {
@@ -64,6 +36,12 @@ Module.register("MMM-SensorGateway", {
 			fi: "translations/fi.json",
 			sv: "translations/sv.json",
 		};
+	},
+	sendInitNotification: function () {
+		//From module developer documentation:
+		//https://github.com/MichMich/MagicMirror/tree/develop/modules
+		//Note 2: The socket connection is established as soon as the module sends its first message using sendSocketNotification.
+		this.sendSocketNotification("SENSORGATEWAY_START", {});
 	},
 	// Override dom generator.
 	getDom: function () {
@@ -165,50 +143,43 @@ Module.register("MMM-SensorGateway", {
 		return wrapper;
 	},
 	// Override socket notification handler.
-	socketNotificationReceived: function (notification, payload) {
+	notificationReceived: function (notification, payload, sender) {
+		if (notification == 'MODULE_DOM_CREATED') {
+			//we are ready to receive sensor data
+			this.sendInitNotification();
+		}
+	},
 
+	// Override socket notification handler.
+	socketNotificationReceived: function (notification, payload) {
 		var obj = JSON.parse(payload);
 
 		var self = this;
 		if (notification === 'MOVESENSE_CONTROL_PACKET') {
-			var opts = { timeout: 1000 };
-
-			if (obj.state === 1) {
-				if (self.gState != 1) {
-					self.gState = 1;
-					this.sendSocketNotification("MOVESENSE_ON", {});
+			if (this.controlsensor.MAC === obj.MAC) {
+				if (obj.state === 1) {
+					if (self.gState != 1) {
+						self.gState = 1;
+						this.sendSocketNotification("MOVESENSE_ON", {});
+					}
 				}
-			}
-			else if (obj.state === 2) {
-				if (self.gState != 2) {
-					self.gState = 2;
-					this.sendSocketNotification("MOVESENSE_OFF", {});
+				else if (obj.state === 2) {
+					if (self.gState != 2) {
+						self.gState = 2;
+						this.sendSocketNotification("MOVESENSE_OFF", {});
+					}
 				}
 			}
 		} //control package
 		else if (notification === 'RUUVI_ENVIRONMENT_PACKET') {
 			console.log("puukko - RUUVI_ENVIRONMENT_PACKET!" + obj);
-			if (obj.hasOwnProperty('MAC')) {
-				var sensor = this.config["environmentsensor"];
-
+			for (var i = 0; i < this.envsensors.length; i++) {
+				var sensor = this.envsensors[i];
 				if (sensor.MAC === obj.MAC) {
-					self.gLocationText = sensor.name;
-					self.gTemp = obj.temperature;
-					self.gPressure = obj.pressure;
-					self.gHumidity = obj.humidity;
-					//				self.text = sensor.name + ": " + obj.temperature + "c" + " paine: " +obj.pressure + " kosteus: " +obj.humidity
+					sensor.temperature = obj.temperature;
+					sensor.pressure = obj.pressure;
+					sensor.humidity = obj.humidity;
 					self.updateDom();
-				}
-
-				for (var i = 0; i < this.envsensors.length; i++) {
-					var sensor = this.envsensors[i];
-					if (sensor.MAC === obj.MAC) {
-						sensor.temperature = obj.temperature;
-						sensor.pressure = obj.pressure;
-						sensor.humidity = obj.humidity;
-						//				self.text = sensor.name + ": " + obj.temperature + "c" + " paine: " +obj.pressure + " kosteus: " +obj.humidity
-						self.updateDom();
-					}
 				}
 			}
 		}
