@@ -37,7 +37,7 @@ Out of scope :
 
 ### Clone and configure module 
 * Clone MMM-SensorGateway under modules in the MM2 platform as all 3rd party modules
-* Configuration:
+* Configuration (into config/config.js) :
 
 ```
 		{
@@ -70,9 +70,10 @@ Out of scope :
  }
 ```
 please note all MAC ADDRESSES are in UPPERCASE
+`controlsensor` is optional configuration block
 * run `npm install` in module's directory to install websocket and exec modules.
 
-### install script for Gateway
+### Install script for Gateway
 * run install script with root priviledges : `MagicMirror/modules/MMM-SensorGateway $ sudo ./install.sh`
   * This will setup an service that will kick in during RasPi boot-up
 * Expected output
@@ -110,5 +111,5 @@ Oct 16 19:45:40 raspberrypi local_blegatewaykickstart.sh[962]: {'acceleration': 
 * Gateway and MM2 module uses TCP port 8001 for communicating (check if another software is using this)
 * Gateway can be changed to route beacons to local network (for example debugging from PC). See def _main(argv): in bleAdvWebSocket.py
 * Run gateway manually go to gateway folder and `sudo python bleAdvWebSocket.py`
-* Check that MAC ADDRESSES are in UPPERCASE
+* Check that MAC ADDRESSES are in UPPERCASE in configuration
 * RuuviTags are broadcasting with Data Format 3 Protocol Specification (RAWv1)
