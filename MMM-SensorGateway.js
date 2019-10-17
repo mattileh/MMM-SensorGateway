@@ -113,7 +113,6 @@ Module.register("MMM-SensorGateway", {
 			var degreeLabel = "°";
 
 			if (config.units === "metric") {
-				console.log("PUUKKO METRIC");
 				valTemperature2.innerHTML = this.envsensors[i].temperature + degreeLabel + " C";
 			} else {
 				if (this.envsensors[i].temperature != NaN) {
@@ -156,15 +155,17 @@ Module.register("MMM-SensorGateway", {
 
 		var self = this;
 		if (notification === 'MOVESENSE_CONTROL_PACKET') {
-			if (this.config.controlsensor.MAC === obj.MAC) {
+			if (this.config.controlsensor && this.config.controlsensor.MAC === obj.MAC) {
 				if (obj.state === 1) {
 					if (self.gState != 1) {
+						console.log("Movesense control - initiate state change to ON");
 						self.gState = 1;
 						this.sendSocketNotification("MOVESENSE_ON", {});
 					}
 				}
 				else if (obj.state === 2) {
 					if (self.gState != 2) {
+						console.log("Movesense control - initiate state change to OFF");
 						self.gState = 2;
 						this.sendSocketNotification("MOVESENSE_OFF", {});
 					}
@@ -172,7 +173,6 @@ Module.register("MMM-SensorGateway", {
 			}
 		} //control package
 		else if (notification === 'RUUVI_ENVIRONMENT_PACKET') {
-			console.log("puukko - RUUVI_ENVIRONMENT_PACKET!" + obj);
 			for (var i = 0; i < this.envsensors.length; i++) {
 				var sensor = this.envsensors[i];
 				if (sensor.MAC === obj.MAC) {
