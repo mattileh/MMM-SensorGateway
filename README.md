@@ -117,5 +117,5 @@ Oct 16 19:45:40 raspberrypi local_blegatewaykickstart.sh[962]: {'acceleration': 
 
 # Special thanks
 
-* Gateway is reusing https://bitbucket.org/suunto/movesense-raspi-gateway/src/master/src/ which is based on examples took from beacontools by Citruz. https://github.com/citruz/beacontools and for Ruuvi the above mentioned python library, which was super easy to take in use, is utilized.
+* Gateway is reusing https://bitbucket.org/suunto/movesense-raspi-gateway/src/master/src/ which is based on examples took from beacontools by Citruz. https://github.com/citruz/beacontools and for Ruuvi the above mentioned `ruuvitag-sensor` python library, which was super easy to take in use, is utilized.
 
