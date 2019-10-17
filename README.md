@@ -114,3 +114,8 @@ Oct 16 19:45:40 raspberrypi local_blegatewaykickstart.sh[962]: {'acceleration': 
 * Run gateway manually go to gateway folder and `sudo python bleAdvWebSocket.py`
 * Check that MAC ADDRESSES are in UPPERCASE in configuration
 * RuuviTags are broadcasting with Data Format 3 Protocol Specification (RAWv1)
+
+# Special thanks
+
+* Gateway is reusing https://bitbucket.org/suunto/movesense-raspi-gateway/src/master/src/ which is based on examples took from beacontools by Citruz. https://github.com/citruz/beacontools and for Ruuvi the above mentioned python library, which was super easy to take in use, is utilized.
+
