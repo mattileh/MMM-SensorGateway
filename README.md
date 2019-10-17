@@ -18,10 +18,10 @@ This module enables taking a shortcut for having live sensor data in your mirror
 
 ![Example UI](/documentation/exampleui.png)
 
-* RuuviTag(s) information is routed to MagicMirror platform.
-* Movesense tag is used as a control platform for demo purposes.
+* RuuviTag(s) environment information is routed to MagicMirror platform.
+* (optional) Movesense tag is used as a control platform / poor man's power switch for demo purposes
   * Doubletapping the configured Movesense switches off (and back on) the MM2 screen
-  * Example firmwares can be found from firmwares folder (for own implementation see beaconing examples in : https://bitbucket.org/suunto/movesense-device-lib/src/master/samples/custom_bleadv_app/) 
+  * Firmwares for above mentioned demo can be found from `firmwares` folder (for own implementation see beaconing examples in : https://bitbucket.org/suunto/movesense-device-lib/src/master/samples/custom_bleadv_app/) 
   
 
 # Installation guide
@@ -30,6 +30,7 @@ Out of scope :
 * Install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and tags can be seen (verify with `ruuvitag -f` section of instructions)
   * Python 2.7 tested on this project scope.
   * (current) Data Format 3 Protocol Specification (RAWv1) supported
+* Updating Movesense firmware (Movesense has a sample app that can do the FOTA update)  
 * Finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
 * Verify that RasPi has Bluetooth up&running in hci0:
 
