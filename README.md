@@ -29,8 +29,8 @@ This module enables taking a shortcut for having live sensor data in your mirror
 
 Out of scope :
 * install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and tags can be seen (verify with `ruuvitag -f` section of instructions)
-* finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
   *  Python 2.7 tested on this project scope. 
+* finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
 * Verify that RasPi has Bluetooth up&running in hci0:
 
 `hcitool dev` should print out something similar `Devices: hci0    B8:27:EB:A8:03:11`
