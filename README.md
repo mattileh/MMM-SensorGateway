@@ -10,7 +10,6 @@ This module enables taking a shortcut for having live sensor data in your mirror
 
 ### Movesense
 * www.movesense.com
-* https://bitbucket.org/suunto/movesense-device-lib
 
 ### Ruuvi
 * https://ruuvi.com/
@@ -28,9 +27,10 @@ This module enables taking a shortcut for having live sensor data in your mirror
 # Installation guide
 
 Out of scope :
-* install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and tags can be seen (verify with `ruuvitag -f` section of instructions)
-  *  Python 2.7 tested on this project scope. 
-* finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
+* Install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and tags can be seen (verify with `ruuvitag -f` section of instructions)
+  * Python 2.7 tested on this project scope.
+  * (current) Data Format 3 Protocol Specification (RAWv1) supported
+* Finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
 * Verify that RasPi has Bluetooth up&running in hci0:
 
 `hcitool dev` should print out something similar `Devices: hci0    B8:27:EB:A8:03:11`
@@ -110,4 +110,5 @@ Oct 16 19:45:40 raspberrypi local_blegatewaykickstart.sh[962]: {'acceleration': 
 * Gateway and MM2 module uses TCP port 8001 for communicating (check if another software is using this)
 * Gateway can be changed to route beacons to local network (for example debugging from PC). See def _main(argv): in bleAdvWebSocket.py
 * Run gateway manually go to gateway folder and `sudo python bleAdvWebSocket.py`
-* Check that MAC ADDRESSES are in UPPERCASE 
+* Check that MAC ADDRESSES are in UPPERCASE
+* RuuviTags are broadcasting with Data Format 3 Protocol Specification (RAWv1)
