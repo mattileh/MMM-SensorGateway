@@ -1,6 +1,7 @@
 # MMM-SensorGateway
-Example to forward BLE beaconing sensors info into MagicMirror² platform.
-This module enables taking a shortcut for having live sensor data in your mirror, without touching the Pi hardware.
+
+Want to get Live Sensor data to your mirror without touching the Pi hardware? 
+This module enables taking a shortcut by utilizing the BLE advertisment beacons from sensors and route that info via gateway into MagicMirror² platform.
 
 ### MagicMirror² platform
 * https://magicmirror.builders/
