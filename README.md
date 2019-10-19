@@ -19,22 +19,21 @@ This module enables taking a shortcut for having live sensor data in your mirror
 ![Example UI](/documentation/exampleui.png)
 
 * RuuviTag(s) environment information is routed to MagicMirror platform.
-* (optional) Movesense tag is used as a control platform / poor man's power switch for demo purposes
+* (optional) Movesense tag is used as a control platform / "poor man's" power switch for demo purposes
   * Doubletapping the configured Movesense switches off (and back on) the MM2 screen
-  * Firmwares for above mentioned demo can be found from `firmwares` folder (for own implementation see beaconing examples in : https://bitbucket.org/suunto/movesense-device-lib/src/master/samples/custom_bleadv_app/) 
+  * Firmwares for above mentioned demo can be found from `firmwares` folder (for own implementations see beaconing examples in : https://bitbucket.org/suunto/movesense-device-lib/src/master/samples/custom_bleadv_app/) 
   
 
 # Installation guide
 
-Out of scope :
-* Install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and tags can be seen (verify with `ruuvitag -f` section of instructions)
+### Out of scope 
+* configuring BLE interface on RasPi in hci0
+  * `hcitool dev` should print out something similar `Devices: hci0    B8:27:EB:A9:02:03`
+* Install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and verify tags can be seen (use for example `ruuvitag -f` section of instructions)
   * Python 2.7 tested on this project scope.
   * (current) Data Format 3 Protocol Specification (RAWv1) supported
 * Updating Movesense firmware (Movesense has a sample app that can do the FOTA update)  
-* Finding out the MAC addresses of the beacons (you can use forexample NRFConnect or the mobile application provided by Movesense and Ruuvi)
-* Verify that RasPi has Bluetooth up&running in hci0:
-
-`hcitool dev` should print out something similar `Devices: hci0    B8:27:EB:A8:03:11`
+* Finding out the MAC addresses of the beacons (you can use, for example, NRFConnect(https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=fi) or the mobile applications provided by Movesense and Ruuvi 
 
 ### Clone and configure module 
 * Clone MMM-SensorGateway under modules in the MM2 platform as all 3rd party modules
@@ -70,8 +69,11 @@ Out of scope :
 			}
  }
 ```
-please note all MAC ADDRESSES are in UPPERCASE
 `controlsensor` is optional configuration block
+`MAC` please note all MAC ADDRESSES are in UPPERCASE
+`location` is arbitrary string
+`type` is for future development
+
 * run `npm install` in module's directory to install websocket and exec modules.
 
 ### Install script for Gateway
