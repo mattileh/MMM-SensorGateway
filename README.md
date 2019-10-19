@@ -37,6 +37,7 @@ This module enables taking a shortcut for having live sensor data in your mirror
 
 ### Clone and configure module 
 * Clone MMM-SensorGateway under modules in the MM2 platform as all 3rd party modules
+* run `npm install` in module's directory to install websocket and exec modules.
 * Configuration (into config/config.js) :
 
 ```
@@ -77,8 +78,6 @@ This module enables taking a shortcut for having live sensor data in your mirror
 `location` is arbitrary string
 
 `type` is for future development
-
-* run `npm install` in module's directory to install websocket and exec modules.
 
 ### Install script for Gateway
 * run install script with root priviledges : `MagicMirror/modules/MMM-SensorGateway $ sudo ./install.sh`
