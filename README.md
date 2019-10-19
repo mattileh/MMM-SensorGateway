@@ -69,9 +69,13 @@ This module enables taking a shortcut for having live sensor data in your mirror
 			}
  }
 ```
+
 `controlsensor` is optional configuration block
+
 `MAC` please note all MAC ADDRESSES are in UPPERCASE
+
 `location` is arbitrary string
+
 `type` is for future development
 
 * run `npm install` in module's directory to install websocket and exec modules.
