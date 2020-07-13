@@ -1,4 +1,4 @@
-# MMM-SensorGateway
+﻿# MMM-SensorGateway
 
 Want to get Live Sensor data to your mirror without touching the Pi hardware? 
 This module enables taking a shortcut by utilizing the BLE advertisment beacons from sensors and route that info via gateway into MagicMirror² platform.
@@ -32,7 +32,7 @@ This module enables taking a shortcut by utilizing the BLE advertisment beacons 
   * `hcitool dev` should print out something similar `Devices: hci0    B8:27:EB:A9:02:03`
 * Install python library for RuuviTag (see : https://github.com/ttu/ruuvitag-sensor/blob/master/install_guide_pi.md ) and verify tags can be seen (use for example `ruuvitag -f` section of instructions)
   * Python 2.7 tested on this project scope.
-  * (current) Data Format 3 Protocol Specification (RAWv1) supported
+  * *NOTE* Currently only data format 3 protocol specification (RAWv1) supported,which was the current during the module dev time. SHOULD be updated to protocol 5 as 3 is obsolete (see more from Ruuvi's github)
 * Updating Movesense firmware (Movesense has a sample app that can do the FOTA update)  
 * Finding out the MAC addresses of the beacons (you can use, for example, NRFConnect(https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=fi) or the mobile applications provided by Movesense and Ruuvi 
 
