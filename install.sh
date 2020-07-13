@@ -12,6 +12,12 @@ servicesettingsfile="/etc/local_blegateway.cnf"
 srcpath=`pwd`
 repopath=$PWD
 
+echo "Install build packages and websocket python dependencies"
+sudo apt-get --assume-yes install build-essential libssl-dev libffi-dev python-dev
+sudo apt-get --assume-yes  install python-bluez
+yes | pip install websocket==0.2.1
+yes | pip install websocket-client==0.57.0
+
 echo "Copy screen toggle script"
 /bin/cp -rf $repopath/scripts/screen.sh /usr/bin/screen.sh
 
