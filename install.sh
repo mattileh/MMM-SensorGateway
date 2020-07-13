@@ -12,9 +12,24 @@ servicesettingsfile="/etc/local_blegateway.cnf"
 srcpath=`pwd`
 repopath=$PWD
 
+
+echo "Update system"
+sudo apt-get --assume-yes update &&  sudo apt-get dist-upgrade && echo +++ upgrade successful +++
+
+echo "Install bluetooth libraries"
+sudo apt-get --assume-yes install bluetooth bluez blueman
+
+echo "Install ruuvitag-sensor package"
+sudo apt-get --assume-yes install bluez-hcidump && echo +++ install successful +++
+
+yes | sudo pip install ruuvitag-sensor==1.1.0
+
+
 echo "Install build packages and websocket python dependencies"
 sudo apt-get --assume-yes install build-essential libssl-dev libffi-dev python-dev
 sudo apt-get --assume-yes  install python-bluez
+
+
 yes | pip install websocket==0.2.1
 yes | pip install websocket-client==0.57.0
 
