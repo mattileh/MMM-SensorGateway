@@ -42,34 +42,34 @@ This module enables taking a shortcut by utilizing the BLE advertisment beacons 
 * Configuration (into config/config.js) :
 
 ```
-		{
-			module: "MMM-SensorGateway",
-			position: "bottom_bar",
-			config: {
-					controlsensor:
-					{
-						type: "movesense",
-						MAC: "01:11:12:C2:18:04"
-					},
-					envsensors: [
-						{
-							type: "ruuvi",
-							location: "Living room2",
-							MAC: "FE:11:11:1C:11:11"
-						},
-						{
-							type: "ruuvi",
-							location: "Bedroom",
-							MAC: "D3:21:CC:34:DF:95"
-						},
-						{
-							type: "ruuvi",
-							location: "Balcony",
-							MAC: "CE:90:63:D7:33:60"
-						}
-					]
+{
+	module: "MMM-SensorGateway",
+		position : "bottom_bar",
+		config : {
+			controlsensor:
+			{
+			type: "movesense",
+				MAC : "01:11:12:C2:18:04"
+			},
+			envsensors : [
+			{
+			type: "ruuvi",
+				location : "Living room2",
+				MAC : "FE:11:11:1C:11:11"
+			},
+			{
+				type: "ruuvi",
+				location : "Bedroom",
+				MAC : "D3:21:CC:34:DF:95"
+			},
+			{
+				type: "ruuvi",
+				location : "Balcony",
+				MAC : "CE:90:63:D7:33:60"
 			}
- }
+		]
+	}
+},
 ```
 
 `controlsensor` is optional configuration block
