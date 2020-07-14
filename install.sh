@@ -24,11 +24,9 @@ sudo apt-get --assume-yes install bluez-hcidump && echo +++ install successful +
 
 yes | sudo pip install ruuvitag-sensor==1.1.0
 
-
 echo "Install build packages and websocket python dependencies"
 sudo apt-get --assume-yes install build-essential libssl-dev libffi-dev python-dev
 sudo apt-get --assume-yes  install python-bluez
-
 
 yes | pip install websocket==0.2.1
 yes | pip install websocket-client==0.57.0
